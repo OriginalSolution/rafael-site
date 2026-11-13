@@ -1,0 +1,42 @@
+name: Monitor (self-healing)
+
+# Checks userafael.com, the Pages build and the latest Rafael APK download.
+# Uses only the built-in GITHUB_TOKEN. No secrets, no email.
+on:
+  schedule:
+    - cron: '23 */6 * * *'   # every 6 hours, UTC (= Africa/Accra)
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+  pages: write
+
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .github/monitor
+      - uses: actions/cache/restore@v4
+        with:
+          path: .monitor-state
+          key: monitor-state-${{ github.run_id }}
+          restore-keys: monitor-state-
+      - name: Check and fix
+        working-directory: .github/monitor
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          MONITOR_STATE: ${{ github.workspace }}/.monitor-state/state.json
+        run: mkdir -p "$(dirname "$MONITOR_STATE")" && python3 monitor.py
+      - if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: .monitor-state
+          key: monitor-state-${{ github.run_id }}

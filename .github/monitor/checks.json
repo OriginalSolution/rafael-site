@@ -1,0 +1,16 @@
+{
+  "checks": [
+    { "name": "Site: home page", "url": "http://userafael.com/", "contains": "Take back control" },
+    { "name": "Site: privacy page", "url": "http://userafael.com/privacy.html", "contains": "Privacy" }
+  ],
+  "optional_https": [
+    { "name": "Site: HTTPS", "url": "https://userafael.com/", "contains": "Take back control", "host": "userafael.com" }
+  ],
+  "pages": { "name": "GitHub Pages build", "rebuild_on_error": true },
+  "release_apk": {
+    "name": "Android download: latest Rafael APK",
+    "repo": "OriginalSolution/rafael-android",
+    "asset_prefix": "Rafael-v",
+    "asset_suffix": ".apk"
+  }
+}
