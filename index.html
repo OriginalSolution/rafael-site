@@ -2,53 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Rafael · Take back control.</title>
-  <meta name="description" content="Rafael is a voluntary, timed commitment app. Choose the apps and websites you want a break from, set an end date, and Rafael holds the line until it ends. Android first.">
-  <meta name="theme-color" content="#0A0A0A">
-  <meta name="color-scheme" content="dark">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Rafael: Take back control | Commitment blocker for Android</title>
+  <meta name="description" content="Rafael is a voluntary, timed commitment blocker for Android. Block gambling, porn, other apps, websites and phone numbers until the time you chose. No early unlock. Emergency calls always work. Private and on-device.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#FFF8F2" media="(prefers-color-scheme: light)">
   <link rel="canonical" href="https://userafael.com/">
 
-  <!-- Favicons -->
   <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <!-- Open Graph / social. Absolute URLs for userafael.com. -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rafael">
-  <meta property="og:title" content="Rafael · Take back control.">
-  <meta property="og:description" content="A firm, private, timed commitment blocker for gambling, porn and other unwanted apps and websites. Android first.">
+  <meta property="og:title" content="Rafael: Take back control">
+  <meta property="og:description" content="A voluntary, timed commitment blocker for gambling, porn, apps, websites and phone numbers. No early unlock. Emergency calls always work.">
   <meta property="og:url" content="https://userafael.com/">
   <meta property="og:image" content="https://userafael.com/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rafael logo, a glossy orange R with a guardian wing on black, and the tagline Take back control.">
+  <meta property="og:image:alt" content="Rafael: a glowing orange angel behind the wing-R mark and the words Take back control.">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rafael · Take back control.">
-  <meta name="twitter:description" content="A firm, private, timed commitment blocker. Android first.">
+  <meta name="twitter:title" content="Rafael: Take back control">
+  <meta name="twitter:description" content="A voluntary, timed commitment blocker for Android. No early unlock. Emergency calls always work.">
   <meta name="twitter:image" content="https://userafael.com/assets/img/og-image.png">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Rafael","operatingSystem":"Android","applicationCategory":"LifestyleApplication","description":"A voluntary, timed commitment blocker for gambling, porn, other apps, websites and phone numbers.","url":"https://userafael.com/","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Medit USA LTD"}}
+  </script>
 
   <link rel="preload" href="assets/fonts/Montserrat-Variable-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <header class="site-header">
+  <header class="site-header" id="top">
     <div class="wrap header-inner">
-      <a class="brand" href="#top" aria-label="Rafael home"><img src="assets/img/logo.svg" alt="Rafael" width="150" height="38"></a>
-      <nav class="nav" aria-label="Main">
+      <a class="brand" href="#top" aria-label="Rafael, back to top">
+        <img src="assets/img/mark.svg" alt="" width="40" height="36"><span>Rafael</span>
+      </a>
+      <nav aria-label="Main">
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links"><span class="sr-only">Menu</span><span class="bars" aria-hidden="true"></span></button>
         <ul id="nav-links">
           <li><a href="#how">How it works</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#limits">Honest limits</a></li>
-          <li><a href="#privacy">Privacy</a></li>
-          <li><a class="btn btn-small" href="#waitlist">Join the waitlist</a></li>
+          <li><a href="#gallery">Screens</a></li>
+          <li><a href="#stories">Stories</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a class="btn btn-small js-apk" href="https://github.com/OriginalSolution/rafael-android/releases/download/v0.5.1-poc/Rafael-v0.5.1-poc.apk">Download</a></li>
         </ul>
       </nav>
     </div>
@@ -56,206 +61,190 @@
 
   <main id="main">
     <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="blob blob-hero-1" aria-hidden="true"></div>
-      <div class="blob blob-hero-2" aria-hidden="true"></div>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true">
+        <picture>
+          <source srcset="assets/img/angel-light.webp" media="(prefers-color-scheme: light)">
+          <img src="assets/img/angel-bg.webp" alt="" width="720" height="1280" fetchpriority="high">
+        </picture>
+        <span class="embers"></span>
+      </div>
       <div class="wrap hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="dot" aria-hidden="true"></span> In development · Android first</p>
-          <h1><span class="shine">Take back control.</span></h1>
-          <span class="accent-rule" aria-hidden="true"></span>
-          <p class="lead">Rafael is a voluntary commitment app. Choose the apps and websites you want a break from, such as betting, adult content or anything else, and set an end date. Rafael keeps that decision in place until the date arrives.</p>
-          <ul class="hero-points">
-            <li>No early unlock once you activate</li>
-            <li>Emergency calling always available</li>
-            <li>Your choices stay on your phone</li>
-          </ul>
+        <div class="hero-copy reveal">
+          <img class="hero-mark" src="assets/img/mark.svg" alt="" width="96" height="88">
+          <p class="eyebrow"><span class="dot" aria-hidden="true"></span> Free · Android · Early access</p>
+          <h1 id="hero-title"><span class="shine">Take back control.</span></h1>
+          <p class="lede">Rafael is a commitment you make to yourself. Choose the gambling apps, sites, porn, other apps or phone numbers you want a break from, choose how long, and Rafael holds the line until that time ends.</p>
           <div class="cta-row">
-            <a class="btn" href="#waitlist">Join the waitlist</a>
-            <a class="btn btn-ghost" href="#how">See how it works</a>
+            <a class="btn btn-big js-apk" href="https://github.com/OriginalSolution/rafael-android/releases/download/v0.5.1-poc/Rafael-v0.5.1-poc.apk">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 3a1 1 0 0 1 1 1v9.6l3.3-3.3a1 1 0 1 1 1.4 1.4l-5 5a1 1 0 0 1-1.4 0l-5-5a1 1 0 1 1 1.4-1.4l3.3 3.3V4a1 1 0 0 1 1-1zM5 19h14a1 1 0 1 1 0 2H5a1 1 0 1 1 0-2z"/></svg>
+              <span>Download for Android<small class="js-apk-version">Latest release · APK</small></span>
+            </a>
+            <span class="soon" role="note">
+              <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5v5.4l3.7 2.2-1 1.7L11 13.6V7h2z"/></svg>
+              <span><small>Coming soon to</small>Google Play</span>
+            </span>
+          </div>
+          <p class="hero-note">No early unlock. Emergency calls always work. Everything stays on your phone.</p>
+        </div>
+        <div class="hero-phone reveal" aria-hidden="true">
+          <div class="halo"></div>
+          <div class="phone float">
+            <picture>
+              <source srcset="assets/shots/09_active_angelic_light.webp" media="(prefers-color-scheme: light)">
+              <img src="assets/shots/08_active_halo_dark.webp" alt="" width="450" height="1000">
+            </picture>
           </div>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="hero-orb"></div>
-          <img class="hero-mark" src="assets/img/mark-orange-gloss.svg" alt="" width="439" height="400">
-        </div>
       </div>
+      <a class="scroll-cue" href="#how"><span class="sr-only">Scroll to How it works</span><span aria-hidden="true"></span></a>
     </section>
 
     <!-- HOW IT WORKS -->
     <section class="section" id="how" aria-labelledby="how-title">
       <div class="wrap">
         <p class="kicker">How it works</p>
-        <h2 id="how-title">Decide once, while things are calm.</h2>
-        <p class="section-lead">The hardest moments are rarely the moments we planned for. Rafael lets you make the decision ahead of time and then keeps it for you.</p>
+        <h2 id="how-title">Three steps. Then it holds.</h2>
         <ol class="steps">
-          <li class="step">
-            <span class="step-n">1</span>
+          <li class="glass step reveal">
+            <span class="step-num" aria-hidden="true">1</span>
             <h3>Choose what to block</h3>
-            <p>Pick installed apps and add websites or supported categories. Decide which essential apps stay available, such as your dialer, maps or work apps.</p>
+            <p>Pick apps from your phone, type in websites like bet365.com, and add phone numbers you don't want to reach you. Keep the people who matter always reachable.</p>
           </li>
-          <li class="step">
-            <span class="step-n">2</span>
-            <h3>Set your end date</h3>
-            <p>Choose an exact date and time. Before you confirm, Rafael shows the full summary: what's blocked, what stays open, your time zone and how strongly your phone can protect it.</p>
+          <li class="glass step reveal">
+            <span class="step-num" aria-hidden="true">2</span>
+            <h3>Set your time</h3>
+            <p>Swipe through simple cards: 1 day, 1 week, 30 days or your own date. Set a 6-digit setup PIN so changes stay deliberate.</p>
           </li>
-          <li class="step">
-            <span class="step-n">3</span>
-            <h3>It stays locked</h3>
-            <p>After you activate, there's no pause, shortcut or paid bypass inside Rafael. Your setup code can't bring the end date forward. Emergency calling keeps working.</p>
-          </li>
-          <li class="step">
-            <span class="step-n">4</span>
-            <h3>It ends automatically</h3>
-            <p>At the deadline, restrictions lift on their own. You don't need a code, a payment or a connection, and starting another commitment is always a new, fresh choice.</p>
+          <li class="glass step reveal">
+            <span class="step-num" aria-hidden="true">3</span>
+            <h3>Pledge and hold to start</h3>
+            <p>Read your pledge, then press and hold for two seconds to seal it. From then on there is no pause, cancel or early unlock until it ends.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- BLOCKED SCREEN EXAMPLE -->
-    <section class="section section-alt" aria-labelledby="calm-title">
-      <div class="wrap split">
-        <div>
-          <p class="kicker">Calm, not shame</p>
-          <h2 id="calm-title">A steady reminder of the choice you made.</h2>
-          <p>When you reach something you've blocked, Rafael doesn't lecture you. It reminds you of the choice you made, shows when it ends, and points you to what's still open.</p>
-          <p>No labels, no diagnosis and no guilt. Rafael is one tool that helps you keep a decision. It doesn't claim to cure anything.</p>
-        </div>
-        <figure class="phone" aria-label="Example of a Rafael blocked screen">
-          <div class="phone-screen">
-            <img src="assets/img/mark-orange-gloss.svg" alt="" width="64" height="58" class="phone-mark">
-            <p class="phone-title">You chose to protect this time.</p>
-            <p class="phone-body">This website is restricted until <strong>30 November at 6:00&nbsp;p.m.</strong></p>
-            <div class="phone-count" aria-hidden="true">
-              <div><b>17</b><span>days</span></div><div><b>15</b><span>hrs</span></div><div><b>42</b><span>min</span></div>
-            </div>
-            <p class="phone-note">You can still access your essential functions.</p>
-            <span class="phone-btn">Emergency call</span>
-          </div>
-          <figcaption>Illustrative design, not a finished app screen.</figcaption>
-        </figure>
-      </div>
-    </section>
-
     <!-- FEATURES -->
     <section class="section" id="features" aria-labelledby="features-title">
-      <div class="blob blob-features" aria-hidden="true"></div>
       <div class="wrap">
-        <p class="kicker">Key features</p>
-        <h2 id="features-title">Firm where it matters. Gentle everywhere else.</h2>
-        <div class="cards">
-          <article class="card"><h3>Timed commitment</h3><p>A fixed end date and time. Once it's active, you can't cancel it or shorten it from inside the app.</p></article>
-          <article class="card"><h3>App restrictions</h3><p>Block the apps you choose, whether that's betting, adult content, gaming or social apps.</p></article>
-          <article class="card"><h3>Website restrictions</h3><p>Block specific domains and supported categories, with coverage tested for each device and browser.</p></article>
-          <article class="card"><h3>Restricted phone mode</h3><p>On supported setups, limit the phone to a short list of essentials you pick in advance.</p></article>
-          <article class="card"><h3>Clear countdown</h3><p>See the exact end time, the time left, what's covered and whether protection is working.</p></article>
-          <article class="card"><h3>Automatic expiry</h3><p>Ends at the saved deadline. Changing the clock or time zone won't move it.</p></article>
-          <article class="card"><h3>Setup code</h3><p>Confirms and protects your setup. It never overrides an active commitment.</p></article>
-          <article class="card card-accent"><h3>Emergency access</h3><p>Emergency calling and the essential functions you choose stay available the whole time.</p></article>
-        </div>
-        <div class="later">
-          <h3>Being explored for later</h3>
-          <p>These ideas come after core blocking is proven to work:</p>
-          <ul>
-            <li><strong>Urge button:</strong> breathing prompts, a short distraction or encouragement. It never lifts restrictions.</li>
-            <li><strong>Private check-ins:</strong> track your goals and the commitments you've completed.</li>
-            <li><strong>Schedules:</strong> cover the times you find hardest, like evenings or payday.</li>
-            <li><strong>Accountability partner:</strong> optional and off by default. They see only a status summary you approve, never your browsing, and they don't get an unlock code.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- HONEST LIMITS -->
-    <section class="section section-deep" id="limits" aria-labelledby="limits-title">
-      <div class="blob blob-limits" aria-hidden="true"></div>
-      <div class="wrap">
-        <p class="kicker kicker-light">Honest limits</p>
-        <h2 id="limits-title">Strong, but we won't call it unbreakable.</h2>
-        <p class="section-lead">Rafael itself won't accept early-unlock requests. How hard it is to get around Rafael from outside the app depends on your phone and how it's set up. Here's how things stand.</p>
-        <div class="limits-grid">
-          <div class="limit">
-            <h3>Android first</h3>
-            <p>We're building and testing on Android first, starting with a prototype that measures how well blocking actually holds up. A stricter managed setup may offer stronger protection on some devices.</p>
-          </div>
-          <div class="limit">
-            <h3>iPhone later</h3>
-            <p>We'll evaluate iPhone separately. Apple's tools work differently and permission can be withdrawn, so we won't promise the same strength there.</p>
-          </div>
-          <div class="limit">
-            <h3>Device-level escapes</h3>
-            <p>A factory reset, system recovery, or a rooted or jailbroken phone can defeat app-level controls. On a standard install, changing permissions or settings can weaken protection. If protection is lost, Rafael will tell you rather than show a false "protected" status.</p>
-          </div>
-          <div class="limit">
-            <h3>Website filtering isn't perfect</h3>
-            <p>Category lists can miss new sites or block the wrong ones. Filtering can't always tell an unwanted page from a useful one on the same site, and it doesn't remove downloaded files. Another VPN can also conflict with it.</p>
-          </div>
-        </div>
-        <p class="fine">If you're finding things hard, it can help to talk to someone you trust or a local support service as well. Rafael works best as one part of your own plan.</p>
-      </div>
-    </section>
-
-    <!-- PRIVACY -->
-    <section class="section" id="privacy" aria-labelledby="privacy-title">
-      <div class="blob blob-privacy" aria-hidden="true"></div>
-      <div class="wrap split">
-        <div>
-          <p class="kicker">Privacy by design</p>
-          <h2 id="privacy-title">What you block is your business.</h2>
-          <p>Your blocked apps, websites and commitment details stay on your device by default. Rafael doesn't need an account to keep an active commitment running.</p>
-        </div>
-        <ul class="checks">
-          <li><strong>Stays on your device.</strong> Your selections and commitment details are stored locally.</li>
-          <li><strong>No browsing logs.</strong> We don't keep full URLs, page contents or detailed browsing activity.</li>
-          <li><strong>No snooping on secure traffic.</strong> Filtering avoids decrypting your personal HTTPS connections.</li>
-          <li><strong>Your code is protected.</strong> Only a secure verifier is stored, never the code itself.</li>
-          <li><strong>Analytics leave out the sensitive parts.</strong> They never include the apps you chose or the sites you visit.</li>
-          <li><strong>Sharing is off by default.</strong> Nothing goes to anyone unless you choose to send it.</li>
+        <p class="kicker">Features</p>
+        <h2 id="features-title">Built to keep your promise.</h2>
+        <ul class="features">
+          <li class="glass feature reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span><h3>Apps</h3><p>Betting apps, scores apps, social apps: when you open one, Rafael's shield covers it.</p></li>
+          <li class="glass feature reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></svg></span><h3>Websites</h3><p>A private on-device filter blocks the sites you list, subdomains included, in any browser.</p></li>
+          <li class="glass feature reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span><h3>Phone numbers</h3><p>Block calls from numbers that pull you back, and keep chosen numbers always reachable.</p></li>
+          <li class="glass feature reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><h3>Per-app times</h3><p>Betting apps blocked all day, YouTube only 10 pm to 6 am, or weekdays only. Each item gets its own schedule.</p></li>
+          <li class="glass feature reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><h3>Add anytime, never remove early</h3><p>During a commitment you can add more apps, sites or numbers and make times stricter. Nothing comes off until it ends.</p></li>
+          <li class="glass feature reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><h3>Setup PIN</h3><p>A 6-digit PIN protects your settings. It's stored only as a salted hash on your phone.</p></li>
+          <li class="glass feature reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"/><path d="M12 8v4M12 15.5v.5"/></svg></span><h3>Emergency calls always work</h3><p>Rafael never blocks emergency calls, your phone app or system settings.</p></li>
+          <li class="glass feature reveal"><span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="8.5" height="16" rx="2"/><rect x="13" y="4" width="8.5" height="16" rx="2"/></svg></span><h3>Works on foldables</h3><p>On big inner screens like the Galaxy Z Fold, Rafael splits into two panes.</p></li>
         </ul>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section class="section section-alt" aria-labelledby="faq-title">
-      <div class="wrap narrow">
-        <p class="kicker">Questions</p>
-        <h2 id="faq-title">Good to know</h2>
-        <details><summary>Can I end a commitment early?</summary><p>No. That's the point. You can edit or cancel freely while you're still setting it up. Once you activate it, the end date is fixed. Rafael shows a clear summary and asks you to confirm before that point.</p></details>
-        <details><summary>What if there's an emergency?</summary><p>Emergency calling stays available throughout, along with the essential apps you choose before you activate.</p></details>
-        <details><summary>What if my subscription ends?</summary><p>An active commitment, and emergency access, never depends on payment. Your commitment ends at its deadline either way.</p></details>
-        <details><summary>When can I use it?</summary><p>Rafael is in development. Android comes first, after testing on real devices. Join the waitlist to hear when there's something to try.</p></details>
-        <details><summary>Is Rafael religious?</summary><p>The name is inspired by Raphael, who is associated with healing. You don't need any faith to use Rafael.</p></details>
+    <!-- GALLERY -->
+    <section class="section gallery-section" id="gallery" aria-labelledby="gallery-title">
+      <div class="wrap">
+        <p class="kicker">Screens</p>
+        <h2 id="gallery-title">Calm, bold and on your side.</h2>
+        <p class="sub">Real screens from the current Android build.</p>
+      </div>
+      <div class="gallery" tabindex="0" role="region" aria-label="App screenshots, scroll sideways for more">
+        <figure class="shot reveal"><div class="phone"><img loading="lazy" src="assets/shots/19_commit_cards_dark.webp" width="450" height="1000" alt="Set your commitment: swipeable cards for 1 day, 1 week, 30 days or a custom date."></div><figcaption>Set your time</figcaption></figure>
+        <figure class="shot reveal"><div class="phone"><img loading="lazy" src="assets/shots/20_pin_choose_dark.webp" width="450" height="1000" alt="Setup code screen with a 6-digit PIN pad."></div><figcaption>Choose a setup PIN</figcaption></figure>
+        <figure class="shot reveal"><div class="phone"><picture><source srcset="assets/shots/21_pledge_hold_light.webp" media="(prefers-color-scheme: light)"><img loading="lazy" src="assets/shots/21_pledge_hold_dark.webp" width="450" height="1000" alt="Review and activate: the pledge card listing blocked apps, websites and numbers, with a Hold to start button."></picture></div><figcaption>Pledge and hold</figcaption></figure>
+        <figure class="shot reveal"><div class="phone"><img loading="lazy" src="assets/shots/08_active_halo_dark.webp" width="450" height="1000" alt="Active commitment screen with a glowing halo countdown."></div><figcaption>Your commitment, live</figcaption></figure>
+        <figure class="shot reveal"><div class="phone"><picture><source srcset="assets/shots/12_blocked_shield_wings_light.webp" media="(prefers-color-scheme: light)"><img loading="lazy" src="assets/shots/12_blocked_shield_wings_dark.webp" width="450" height="1000" alt="Blocked screen: wings fold around a shield over a blocked app."></picture></div><figcaption>The shield</figcaption></figure>
+        <figure class="shot reveal"><div class="phone"><img loading="lazy" src="assets/shots/24_active_schedules_dark.webp" width="450" height="1000" alt="Active screen listing what is blocked right now and when each block starts or ends."></div><figcaption>Blocked right now</figcaption></figure>
+        <figure class="shot reveal"><div class="phone"><img loading="lazy" src="assets/shots/24_schedule_editor_dark.webp" width="450" height="1000" alt="Schedule editor for one app with times and weekdays."></div><figcaption>Per-app times</figcaption></figure>
+        <figure class="shot shot-wide reveal"><div class="phone phone-fold"><img loading="lazy" src="assets/shots/24_unfolded_two_pane_dark.webp" width="859" height="1000" alt="Rafael on an unfolded foldable, showing two panes side by side."></div><figcaption>Two panes on foldables</figcaption></figure>
+      </div>
+      <div class="wrap gallery-ctrl">
+        <button class="round" data-dir="-1" aria-label="Previous screens"><span aria-hidden="true">‹</span></button>
+        <button class="round" data-dir="1" aria-label="Next screens"><span aria-hidden="true">›</span></button>
       </div>
     </section>
 
-    <!-- WAITLIST -->
-    <section class="section waitlist" id="waitlist" aria-labelledby="waitlist-title">
-      <div class="blob blob-waitlist" aria-hidden="true"></div>
-      <div class="wrap narrow center waitlist-panel">
-        <img src="assets/img/mark-orange-gloss.svg" alt="" width="72" height="66" class="waitlist-mark">
-        <h2 id="waitlist-title">Join the waitlist</h2>
-        <p>Be the first to hear when Rafael is ready to test on Android. Just updates, no spam.</p>
-        <!--
-          TODO(backend): This form is a NON-FUNCTIONAL PLACEHOLDER.
-          It does not send or store anything. Before launch:
-            1. Choose a waitlist provider or endpoint and set the form's action/method (or wire main.js to POST).
-            2. Add consent wording plus a privacy policy link, and double opt-in if required where you operate.
-            3. Add spam protection (honeypot or captcha) and server-side validation.
-            4. Remove the data-placeholder attribute and the "not connected yet" notice.
-        -->
-        <form class="form" id="waitlist-form" data-placeholder="true" novalidate>
-          <div class="field">
-            <label for="wl-name">Name</label>
-            <input id="wl-name" name="name" type="text" autocomplete="given-name" placeholder="Your first name">
+    <!-- TESTIMONIALS -->
+    <section class="section" id="stories" aria-labelledby="stories-title">
+      <div class="wrap">
+        <p class="kicker">Stories</p>
+        <h2 id="stories-title">In their own words.</h2>
+        <p class="sub">Real stories from people using Rafael, shared with their permission.</p>
+        <div class="stories" id="stories-list" aria-live="polite">
+          <article class="glass story story-empty">
+            <img src="assets/img/mark.svg" alt="" width="56" height="51">
+            <h3>Be one of the first stories</h3>
+            <p>Rafael is brand new. If it has helped you keep a promise to yourself, we'd love to hear how. A few honest lines are enough.</p>
+            <a class="btn" href="mailto:hello@userafael.com?subject=My%20Rafael%20story">Share your story</a>
+            <p class="fine">Stories are only shared with your permission, and you can stay anonymous.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HONEST LIMITS + FAQ -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-grid">
+        <div>
+          <p class="kicker">Honest limits</p>
+          <h2 id="faq-title">What Rafael can and can't do.</h2>
+          <div class="glass limits reveal">
+            <p>Rafael makes slipping a lot harder, but no blocker is impossible to get around. Someone determined can still find a way, for example by wiping the phone or using another device. Rafael works best as a firm promise you made on a clear-headed day.</p>
+            <ul>
+              <li>Texts from blocked numbers aren't blocked, only calls.</li>
+              <li>With the standard method, a blocked app can flash for a moment before the shield covers it. Turning on the optional faster blocking makes it instant.</li>
+              <li>Rafael is a self-help tool, not a medical or treatment service. If you're struggling, please also reach out to someone you trust or a local support line.</li>
+            </ul>
           </div>
-          <div class="field">
-            <label for="wl-email">Email <span aria-hidden="true">*</span></label>
-            <input id="wl-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+        </div>
+        <div class="faq">
+          <details class="glass">
+            <summary>Android says the app is blocked or unsafe. What do I do?</summary>
+            <p>Until Rafael is on Google Play, you install it from a file, and Play Protect may warn you because it doesn't know the app yet. Tap <strong>More details</strong>, then <strong>Install anyway</strong>. Each release lists its SHA-256 fingerprint on GitHub so you can check the file.</p>
+          </details>
+          <details class="glass">
+            <summary>It won't install on my Samsung.</summary>
+            <p>Samsung's <strong>Auto Blocker</strong> stops installs from files. Open Settings, then Security and privacy, then Auto Blocker, and turn it off while you install. You can turn it back on afterwards.</p>
+          </details>
+          <details class="glass">
+            <summary>A switch is greyed out in Settings ("restricted setting").</summary>
+            <p>On Android 13 and newer, apps installed from a file need a one-time unlock. Rafael walks you through it: open Settings, then Apps, then Rafael, tap <strong>⋮</strong> at the top right, choose <strong>Allow restricted settings</strong> and confirm. If you don't see it, tap the grey switch once first, then go back. This step goes away once Rafael is on Google Play.</p>
+          </details>
+          <details class="glass">
+            <summary>Can I end a commitment early?</summary>
+            <p>No. That's the point. There's no pause, cancel or early unlock until the time you chose. You can still add more blocks or make times stricter. Emergency calls, your phone app and system settings always stay available.</p>
+          </details>
+          <details class="glass">
+            <summary>What does Rafael know about me?</summary>
+            <p>Nothing leaves your phone. There's no account, no sign-up, no ads and no analytics. Your lists, schedules and PIN hash are stored on the device only. Read the <a href="privacy.html">privacy policy</a> for the details.</p>
+          </details>
+          <details class="glass">
+            <summary>Does it work on iPhone?</summary>
+            <p>Not yet. Rafael is Android first. Google Play is next, then we'll look at iPhone.</p>
+          </details>
+          <details class="glass">
+            <summary>How much does it cost?</summary>
+            <p>The current early-access version is free.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section final" aria-labelledby="final-title">
+      <div class="wrap">
+        <div class="glass final-card reveal">
+          <img src="assets/img/mark.svg" alt="" width="72" height="66">
+          <h2 id="final-title">Make the promise today.</h2>
+          <p>Free for Android. Installs in a minute.</p>
+          <div class="cta-row center">
+            <a class="btn btn-big js-apk" href="https://github.com/OriginalSolution/rafael-android/releases/download/v0.5.1-poc/Rafael-v0.5.1-poc.apk"><span>Download for Android<small class="js-apk-version">Latest release · APK</small></span></a>
+            <span class="soon" role="note"><span><small>Coming soon to</small>Google Play</span></span>
           </div>
-          <button class="btn" type="submit">Notify me</button>
-          <p class="form-note" id="form-status" role="status" aria-live="polite">Preview only: sign-up isn't connected yet, so nothing you type here is sent or saved.</p>
-        </form>
+          <p class="fine"><a href="https://github.com/OriginalSolution/rafael-android/releases">All releases and release notes</a></p>
+        </div>
       </div>
     </section>
   </main>
@@ -263,19 +252,19 @@
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
-        <img src="assets/img/logo.svg" alt="Rafael" width="150" height="38">
-        <p class="footer-tag"><span class="accent-rule small" aria-hidden="true"></span>Take back control.</p>
+        <a class="brand" href="#top"><img src="assets/img/mark.svg" alt="" width="32" height="29"><span>Rafael</span></a>
+        <p class="fine">Take back control.</p>
       </div>
       <nav aria-label="Footer">
         <ul>
           <li><a href="#how">How it works</a></li>
           <li><a href="#features">Features</a></li>
-          <li><a href="#limits">Honest limits</a></li>
-          <li><a href="#privacy">Privacy</a></li>
-          <li><a href="#waitlist">Waitlist</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="mailto:hello@userafael.com">Contact</a></li>
         </ul>
       </nav>
-      <p class="footer-fine">Rafael is a product in development. Features described here are planned and still being tested, so they aren't a guarantee of what every device will support. Rafael isn't a medical or treatment service.<br>© 2026 Rafael. All rights reserved.</p>
+      <p class="fine footer-fine">© <span class="js-year">2026</span> Medit USA LTD. Rafael is a self-help tool, not a medical service. Google Play is a trademark of Google LLC.</p>
     </div>
   </footer>
 
