@@ -234,6 +234,38 @@ h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; margin: 18px 0 20px; l
 .footer-grid ul a:hover { opacity: 1; color: var(--accent-text); }
 .footer-fine { grid-column: 1 / -1; margin: 10px 0 0; }
 
+
+/* parents */
+.parents-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 22px; margin-top: 40px; align-items: start; }
+.parent-steps { list-style: none; margin: 0; padding: 12px 28px; }
+.parent-steps li { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--glass-border); }
+.parent-steps li:last-child { border-bottom: 0; }
+.parent-steps h3 { font-size: 1.08rem; margin-bottom: .35em; }
+.parent-steps p { margin: 0; color: var(--muted); }
+.pnum { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; font-weight: 900; color: var(--btn-text);
+  background: linear-gradient(180deg, var(--orange-2), var(--orange-3)); box-shadow: 0 8px 20px rgba(255,90,31,.3), inset 0 1px 0 rgba(255,255,255,.5); }
+.parents-side { display: grid; gap: 22px; position: sticky; top: 92px; }
+.parent-limits { padding: 26px; border-color: rgba(255,90,31,.38); }
+.parent-limits h3 { display: flex; align-items: center; gap: 10px; }
+.warn-ico { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: rgba(255,90,31,.16); border: 1px solid rgba(255,90,31,.45); color: var(--orange); font-weight: 900; font-size: .95rem; flex: none; }
+.parent-limits ul { margin: 0; padding-left: 1.1em; color: var(--muted); font-size: .95rem; }
+.parent-limits li { margin-bottom: .7em; }
+.parent-limits li:last-child { margin-bottom: 0; }
+.parent-limits strong { color: var(--text); }
+.parent-tip { display: flex; gap: 16px; align-items: center; padding: 20px 24px; }
+.parent-tip img { width: 40px; flex: none; filter: drop-shadow(0 6px 18px rgba(255,90,31,.5)); }
+.parent-tip p { margin: 0; font-weight: 600; }
+@media (max-width: 1000px) {
+  .parents-grid { grid-template-columns: 1fr; }
+  .parents-side { position: static; }
+}
+@media (max-width: 560px) {
+  .parent-steps { padding: 4px 18px; }
+  .parent-steps li { grid-template-columns: 36px 1fr; gap: 12px; }
+  .pnum { width: 34px; height: 34px; border-radius: 10px; }
+  .parent-limits { padding: 20px 18px; }
+}
+
 /* reveal */
 .reveal { opacity: 1; }
 .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
