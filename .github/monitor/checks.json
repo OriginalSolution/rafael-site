@@ -1,16 +1,45 @@
 {
   "checks": [
-    { "name": "Site: home page", "url": "https://userafael.com/", "contains": "Take back control" },
-    { "name": "Site: privacy page", "url": "https://userafael.com/privacy.html", "contains": "Privacy" }
+    {
+      "name": "Site: home page",
+      "url": "https://userafael.com/",
+      "contains": "Take back control"
+    },
+    {
+      "name": "Site: privacy page",
+      "url": "https://userafael.com/privacy.html",
+      "contains": "Privacy"
+    }
   ],
   "optional_https": [
-    { "name": "Site: HTTPS", "url": "https://userafael.com/", "contains": "Take back control", "host": "userafael.com" }
+    {
+      "name": "Site: HTTPS",
+      "url": "https://userafael.com/",
+      "contains": "Take back control",
+      "host": "userafael.com"
+    }
   ],
-  "pages": { "name": "GitHub Pages build", "rebuild_on_error": true },
-  "release_apk": {
-    "name": "Android download: latest Rafael APK",
-    "repo": "OriginalSolution/rafael-android",
-    "asset_prefix": "Rafael-v",
-    "asset_suffix": ".apk"
+  "pages": {
+    "name": "GitHub Pages build",
+    "rebuild_on_error": true
+  },
+  "release_apk": [
+    {
+      "name": "Android download: latest Rafael APK",
+      "repo": "OriginalSolution/rafael-android",
+      "asset_prefix": "Rafael-v",
+      "asset_suffix": ".apk"
+    },
+    {
+      "name": "Android download: latest Rafael Kids Browser APK",
+      "repo": "OriginalSolution/rafael-kids-browser",
+      "asset_prefix": "Rafael-Kids-Browser-v",
+      "asset_suffix": ".apk"
+    }
+  ],
+  "guardian": {
+    "service": "userafael.com",
+    "attention_after_runs": 2,
+    "redispatch_every_runs": 4
   }
 }

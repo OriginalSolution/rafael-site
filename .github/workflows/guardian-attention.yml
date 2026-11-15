@@ -1,0 +1,33 @@
+name: Guardian attention
+
+# Receives the repository_dispatch "guardian-attention" that the Guardian sends when a problem
+# lasts 2+ runs in a row. For now it records the alert in the run summary and in a pinned
+# `guardian` issue. The owner's planned AI fixer can listen to the same event.
+on:
+  repository_dispatch:
+    types: [guardian-attention]
+
+permissions:
+  issues: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Record the alert
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          REASON: ${{ github.event.client_payload.reason }}
+          SOURCE: ${{ github.event.client_payload.source }}
+          RUN_URL: ${{ github.event.client_payload.run_url }}
+        run: |
+          body="Guardian attention from ${SOURCE:-guardian}: ${REASON:-no reason given}. Run: ${RUN_URL:-n/a}"
+          echo "$body" >> "$GITHUB_STEP_SUMMARY"
+          gh label create guardian --color b60205 --description "Persistent problem flagged by the Guardian" -R "$REPO" 2>/dev/null || true
+          n=$(gh issue list -R "$REPO" --label guardian --state open --json number --jq '.[0].number // empty')
+          if [ -n "$n" ]; then gh issue comment "$n" -R "$REPO" --body "$body"
+          else gh issue create -R "$REPO" --label guardian --title "[guardian] Persistent problem needs attention" --body "$body
+
+          Close this issue once the problem is fixed and health.json on the guardian-state branch says ok."; fi
