@@ -20,6 +20,7 @@ import socket
 import ssl
 import time
 
+from guardian_core import with_backoff
 from monitor_lib import Result, gh, http, load_state, now_iso, save_state, sync_issues, write_summary
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -28,15 +29,16 @@ state = load_state()
 
 
 def one(c: dict) -> Result:
+    """URL check with exponential backoff (2 s, 4 s, 8 s between tries)."""
     expect, timeout = int(c.get("expect", 200)), float(c.get("timeout", 20))
-    status, err, good = 0, "", False
-    for _ in range(2):
+
+    def call():
         status, body, err = http(c["url"], method=c.get("method", "GET"), timeout=timeout, retries=0)
-        good = status == expect and (not c.get("contains") or c["contains"].encode() in body)
-        if good:
-            break
-        time.sleep(5)
-    detail = f"{status}" if good else f"answered {status or err} (expected {expect}{' with the page text' if c.get('contains') else ''})"
+        return status, err, status == expect and (not c.get("contains") or c["contains"].encode() in body)
+
+    (status, err, good), tries = with_backoff(call, lambda r: r[2], tries=int(c.get("tries", 4)))
+    note = f" after {tries} tries" if tries > 1 else ""
+    detail = f"{status}{note}" if good else f"answered {status or err} (expected {expect}{' with the page text' if c.get('contains') else ''}){note}"
     return Result(c["name"], good, detail)
 
 
@@ -73,7 +75,7 @@ def pages(c: dict) -> Result:
         note = "" if info.get("https_enforced") else "; HTTPS not enforced yet"
         return Result(c["name"], True, f"latest build {bstatus}{note}", warn=bool(note))
     r = Result(c["name"], False, f"latest build status {bstatus or s}")
-    if c.get("rebuild_on_error"):
+    if c.get("rebuild_on_error") and not os.environ.get("GUARDIAN_DRY_RUN"):
         rs, _ = gh("POST", f"/repos/{repo}/pages/builds")
         r.fixes.append(f"re-requested a Pages build ({rs})")
     return r
@@ -97,12 +99,16 @@ def release_apk(c: dict) -> Result:
     return Result(c["name"], False, "no published release found")
 
 
+def apk_configs() -> list[dict]:
+    c = CONFIG.get("release_apk") or []
+    return c if isinstance(c, list) else [c]
+
+
 def main() -> int:
     jobs = [(one, c) for c in CONFIG.get("checks", [])] + [(optional_https, c) for c in CONFIG.get("optional_https", [])]
     if CONFIG.get("pages"):
         jobs.append((pages, CONFIG["pages"]))
-    if CONFIG.get("release_apk"):
-        jobs.append((release_apk, CONFIG["release_apk"]))
+    jobs += [(release_apk, c) for c in apk_configs()]
     with cf.ThreadPoolExecutor(max_workers=8) as ex:
         results = list(ex.map(lambda j: j[0](j[1]), jobs))
     actions = sync_issues(results)

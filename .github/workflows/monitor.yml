@@ -1,42 +1,68 @@
-name: Monitor (self-healing)
+name: Guardian (self-healing monitor)
 
-# Checks userafael.com, the Pages build and the latest Rafael APK download.
-# Uses only the built-in GITHUB_TOKEN. No secrets, no email.
+# Rafael Guardian for userafael.com. Uses only the built-in GITHUB_TOKEN; no secrets, no email.
+# State (health.json, incidents.jsonl, last_good.json, state.json) lives on the `guardian-state`
+# branch, never on main, so the live site is untouched.
 on:
   schedule:
     - cron: '23 */6 * * *'   # every 6 hours, UTC (= Africa/Accra)
+  page_build:                 # "boot": self-check after every GitHub Pages deploy
   workflow_dispatch:
+  pull_request:               # tests + a dry run only (no issues, repairs, dispatch or state)
+    branches: [main]
+    paths: ['.github/monitor/**', '.github/workflows/monitor.yml']
 
 permissions:
-  contents: read
+  contents: write   # push to the guardian-state branch and send repository_dispatch
   issues: write
-  pages: write
+  pages: write      # re-request a Pages build (the only auto-repair)
 
 concurrency:
-  group: monitor
+  group: guardian
   cancel-in-progress: false
 
 jobs:
-  monitor:
+  guardian:
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 6          # a hung run is killed; the next scheduled run starts fresh
     steps:
       - uses: actions/checkout@v4
         with:
           sparse-checkout: .github/monitor
-      - uses: actions/cache/restore@v4
+      - name: Unit tests
+        working-directory: .github/monitor
+        run: python3 -m unittest -v guardian_test
+      - name: Load guardian-state branch
+        id: state
+        if: github.event_name != 'pull_request'
+        continue-on-error: true   # the branch does not exist before the first run
+        uses: actions/checkout@v4
         with:
-          path: .monitor-state
-          key: monitor-state-${{ github.run_id }}
-          restore-keys: monitor-state-
-      - name: Check and fix
+          ref: guardian-state
+          path: guardian-state
+      - name: Start guardian-state branch (first run only)
+        if: github.event_name != 'pull_request' && steps.state.outcome != 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          rm -rf guardian-state && mkdir guardian-state && cd guardian-state
+          git init -q -b guardian-state
+          git remote add origin "${{ github.server_url }}/${{ github.repository }}"
+          git config http.${{ github.server_url }}/.extraheader "AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          printf '# Rafael Guardian state\n\nWritten by .github/workflows/monitor.yml on main. Do not edit by hand.\n\n- health.json: status ok/attention, plain reason, checked_at\n- incidents.jsonl: append-only incident log\n- last_good.json: last run where every check passed\n- state.json: counters between runs\n' > README.md
+      - name: Check, repair, record
         working-directory: .github/monitor
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          MONITOR_STATE: ${{ github.workspace }}/.monitor-state/state.json
-        run: mkdir -p "$(dirname "$MONITOR_STATE")" && python3 monitor.py
-      - if: always()
-        uses: actions/cache/save@v4
-        with:
-          path: .monitor-state
-          key: monitor-state-${{ github.run_id }}
+          GUARDIAN_STATE_DIR: ${{ github.workspace }}/guardian-state
+          GUARDIAN_DRY_RUN: ${{ github.event_name == 'pull_request' && '1' || '' }}
+        run: python3 guardian.py
+      - name: Save guardian-state branch
+        if: always() && github.event_name != 'pull_request'
+        working-directory: guardian-state
+        run: |
+          git config user.name "Rafael Guardian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -qm "guardian: $(jq -r '.status + " - " + .reason' health.json | cut -c1-120)"
+          for i in 1 2 3; do git push -q origin guardian-state && break; sleep $((i * 5)); git pull -q --rebase origin guardian-state 2>/dev/null || true; done
