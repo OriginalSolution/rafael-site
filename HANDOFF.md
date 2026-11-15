@@ -1,6 +1,6 @@
 # Rafael: hand-off note
 
-_Last updated 14 Nov 2026 (times are Africa/Accra, which is UTC+0). The canonical copy is in [`OriginalSolution/rafael-site`](https://github.com/OriginalSolution/rafael-site/blob/main/HANDOFF.md). Identical copies are in [`rafael-android`](https://github.com/OriginalSolution/rafael-android/blob/main/HANDOFF.md) and [`rafael-kids-browser`](https://github.com/OriginalSolution/rafael-kids-browser/blob/main/HANDOFF.md)._
+_Last updated 15 Nov 2026 (times are Africa/Accra, which is UTC+0). The canonical copy is in [`OriginalSolution/rafael-site`](https://github.com/OriginalSolution/rafael-site/blob/main/HANDOFF.md). Identical copies are in [`rafael-android`](https://github.com/OriginalSolution/rafael-android/blob/main/HANDOFF.md) and [`rafael-kids-browser`](https://github.com/OriginalSolution/rafael-kids-browser/blob/main/HANDOFF.md)._
 
 This note assumes you know nothing about the project. **It contains no passwords, keys, tokens, keystores or card numbers.** It names each secret and says where it lives. All three repos are **public**.
 
@@ -126,7 +126,7 @@ Never commit `local.properties`, `*.jks`, `keystore.properties`, `.env` files or
 
 ## 7. Automation
 
-1. **GitHub Actions monitor** in rafael-site, at [`.github/workflows/monitor.yml`](https://github.com/OriginalSolution/rafael-site/blob/main/.github/workflows/monitor.yml) with `.github/monitor/{monitor.py, monitor_lib.py, checks.json}`.
+1. **GitHub Actions monitor / Guardian** in rafael-site (upgraded in the `guardian` PR; see section 11), at [`.github/workflows/monitor.yml`](https://github.com/OriginalSolution/rafael-site/blob/main/.github/workflows/monitor.yml) with `.github/monitor/{monitor.py, monitor_lib.py, checks.json}`.
    - Runs every **6 hours** (cron `23 */6 * * *`) and can also be started by hand.
    - Checks the home page ("Take back control"), the privacy page, HTTPS, the GitHub Pages build, and that the **latest `Rafael-v*.apk`** release asset in rafael-android downloads.
    - Opens an issue labelled **`monitor`** when a check fails and closes it when the check passes again.
@@ -220,3 +220,49 @@ Add **only real stories, shared with the person's permission,** to `testimonials
 
 ### 10.5 Kids Browser block lists
 `python3 tools/build_blocklists.py` rebuilds `adult.bin` and `gambling.bin` (FNV-1a 64-bit hashes) from the Block List Project lists (The Unlicense). See that repo's README.
+
+---
+
+## 11. Guardian (watchdog), added 15 Nov 2026 in the `guardian` PRs (waiting for the owner's yes to merge)
+
+It's modelled on Betspapa's Papa Guardian (Betspapa PR #72), which reports a status of `ok` or `attention` with a plain reason and repairs what it can. It uses only the built-in `GITHUB_TOKEN`: no secrets, no spending, no email.
+
+### rafael-site: `.github/workflows/monitor.yml` and `.github/monitor/guardian.py`
+- **When it runs:**
+  - every 6 hours (cron `23 */6 * * *`);
+  - on **`page_build`**, which is the "boot" check after every GitHub Pages deploy;
+  - by hand (Actions › Guardian › Run workflow);
+  - on pull requests, as unit tests plus a **dry run** (no issues, repairs, dispatch or state).
+- **What it checks**, each with **exponential backoff** (4 tries, waiting 2, 4 then 8 s):
+  - the home page (text "Take back control") and the privacy page;
+  - HTTPS (the certificate must have 10 or more days left);
+  - the GitHub Pages build;
+  - the latest `Rafael-v*.apk` and `Rafael-Kids-Browser-v*.apk` release downloads (a 1-byte ranged GET).
+- **Auto-repair:**
+  - re-requests a Pages build when the last build errored;
+  - keeps the **last good data**: if a newest APK fails, it checks that the last good APK still downloads and puts that in the reason;
+  - a hung run is killed after 6 minutes, and runs never overlap (concurrency group `guardian`).
+  - It never edits main or the live site and never deletes anything.
+- **Health check:**
+  - `health.json` on the **`guardian-state`** branch: https://raw.githubusercontent.com/OriginalSolution/rafael-site/guardian-state/health.json
+  - Format: `{service, status: "ok"|"attention", reason, checked_at, consecutive_attention, last_ok_at, checks[], run}`.
+  - It isn't served from userafael.com, on purpose: writing to main on every run would rebuild the site 4+ times a day.
+- **Incident log:** `incidents.jsonl` on `guardian-state`. It's append-only, one JSON line per event, with `kind` = `opened`, `resolved`, `repair` or `dispatch`.
+  - Also on that branch: `last_good.json` (the last all-passing run and the last good APK URLs) and `state.json` (counters).
+  - One **`monitor` issue** per failing check is opened, updated, and closed automatically when the check passes again.
+- **Escalation:** when `attention` lasts **2 runs in a row** (about 12 hours), it sends `repository_dispatch` with event type **`guardian-attention`** to this repo, then again every 4 runs while the problem continues.
+  - The payload is `{source, status, reason, consecutive_runs, run_url}`.
+  - `.github/workflows/guardian-attention.yml` receives it and records it in a `guardian`-labelled issue.
+  - The owner's planned AI fixer can listen for the same event.
+  - repository_dispatch only triggers workflows that are on the default branch, so the receiver works **after merge**.
+- **Tuning:** the `guardian` block in `.github/monitor/checks.json` sets `attention_after_runs` and `redispatch_every_runs`.
+- **Tests:** `cd .github/monitor && python3 -m unittest -v guardian_test`.
+
+### rafael-android and rafael-kids-browser: `.github/workflows/ci.yml`
+- Runs on every push and pull request to `main`, and by hand:
+  - JDK 17 (Temurin) and the Android SDK (platform 35, build-tools 35.0.0);
+  - `./gradlew testDebugUnitTest` then `./gradlew assembleDebug`;
+  - test reports are kept as an artifact for 7 days.
+- **No signing, keystore or release step**, so CI can never publish an APK. Releases stay manual and need the owner's yes (section 10).
+- **Guardian job:** when CI fails on a push to `main` and the previous `main` run also failed, it sends `repository_dispatch` `guardian-attention` (`source: ci`) to that repo.
+- **No health endpoint:** these are on-device apps with no server, so there's nothing to probe. Their public health is covered by the rafael-site Guardian's APK download checks.
