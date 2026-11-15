@@ -1,6 +1,9 @@
 {
- "consecutive_attention": 0,
- "failing": {},
+ "consecutive_attention": 1,
+ "failing": {
+  "Android download: latest Rafael APK": "2026-11-15T18:58:45Z",
+  "Android download: latest Rafael Kids Browser APK": "2026-11-15T18:58:45Z"
+ },
  "last_ok_at": "2026-11-15T07:35:21Z",
- "last_status": "ok"
+ "last_status": "attention"
 }

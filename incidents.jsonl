@@ -1,0 +1,2 @@
+{"at": "2026-11-15T18:58:45Z", "check": "Android download: latest Rafael APK", "detail": "releases API answered 404; last good Rafael-v0.5.1-poc.apk also fails (404)", "kind": "opened"}
+{"at": "2026-11-15T18:58:45Z", "check": "Android download: latest Rafael Kids Browser APK", "detail": "releases API answered 404; last good Rafael-Kids-Browser-v0.2.0-poc.apk also fails (404)", "kind": "opened"}

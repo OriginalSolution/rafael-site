@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-11-15T07:35:21Z",
+ "checked_at": "2026-11-15T18:58:45Z",
  "checks": [
   {
    "detail": "200",
@@ -22,20 +22,20 @@
    "ok": true
   },
   {
-   "detail": "Rafael-v0.5.1-poc.apk (v0.5.1-poc) answered 206",
+   "detail": "releases API answered 404; last good Rafael-v0.5.1-poc.apk also fails (404)",
    "name": "Android download: latest Rafael APK",
-   "ok": true
+   "ok": false
   },
   {
-   "detail": "Rafael-Kids-Browser-v0.2.0-poc.apk (v0.2.0-poc) answered 206",
+   "detail": "releases API answered 404; last good Rafael-Kids-Browser-v0.2.0-poc.apk also fails (404)",
    "name": "Android download: latest Rafael Kids Browser APK",
-   "ok": true
+   "ok": false
   }
  ],
- "consecutive_attention": 0,
+ "consecutive_attention": 1,
  "last_ok_at": "2026-11-15T07:35:21Z",
- "reason": "All checks passed.",
- "run": "https://github.com/OriginalSolution/rafael-site/actions/runs/43690611902",
+ "reason": "Android download: latest Rafael APK: releases API answered 404; last good Rafael-v0.5.1-poc.apk also fails (404); Android download: latest Rafael Kids Browser APK: releases API answered 404; last good Rafael-Kids-Browser-v0.2.0-poc.apk also fails (404)",
+ "run": "https://github.com/OriginalSolution/rafael-site/actions/runs/43749758918",
  "service": "userafael.com",
- "status": "ok"
+ "status": "attention"
 }
