@@ -1,0 +1,41 @@
+{
+ "checked_at": "2026-11-15T07:29:55Z",
+ "checks": [
+  {
+   "detail": "200",
+   "name": "Site: home page",
+   "ok": true
+  },
+  {
+   "detail": "200",
+   "name": "Site: privacy page",
+   "ok": true
+  },
+  {
+   "detail": "200, certificate 88 days left",
+   "name": "Site: HTTPS",
+   "ok": true
+  },
+  {
+   "detail": "latest build built",
+   "name": "GitHub Pages build",
+   "ok": true
+  },
+  {
+   "detail": "Rafael-v0.5.1-poc.apk (v0.5.1-poc) answered 206",
+   "name": "Android download: latest Rafael APK",
+   "ok": true
+  },
+  {
+   "detail": "Rafael-Kids-Browser-v0.2.0-poc.apk (v0.2.0-poc) answered 206",
+   "name": "Android download: latest Rafael Kids Browser APK",
+   "ok": true
+  }
+ ],
+ "consecutive_attention": 0,
+ "last_ok_at": "2026-11-15T07:29:55Z",
+ "reason": "All checks passed.",
+ "run": "https://github.com/OriginalSolution/rafael-site/actions/runs/43690156785",
+ "service": "userafael.com",
+ "status": "ok"
+}

@@ -1,0 +1,41 @@
+{
+ "apks": {
+  "Android download: latest Rafael APK": {
+   "name": "Rafael-v0.5.1-poc.apk",
+   "tag": "v0.5.1-poc",
+   "url": "https://github.com/OriginalSolution/rafael-android/releases/download/v0.5.1-poc/Rafael-v0.5.1-poc.apk"
+  },
+  "Android download: latest Rafael Kids Browser APK": {
+   "name": "Rafael-Kids-Browser-v0.2.0-poc.apk",
+   "tag": "v0.2.0-poc",
+   "url": "https://github.com/OriginalSolution/rafael-kids-browser/releases/download/v0.2.0-poc/Rafael-Kids-Browser-v0.2.0-poc.apk"
+  }
+ },
+ "checked_at": "2026-11-15T07:29:55Z",
+ "checks": [
+  {
+   "detail": "200",
+   "name": "Site: home page"
+  },
+  {
+   "detail": "200",
+   "name": "Site: privacy page"
+  },
+  {
+   "detail": "200, certificate 88 days left",
+   "name": "Site: HTTPS"
+  },
+  {
+   "detail": "latest build built",
+   "name": "GitHub Pages build"
+  },
+  {
+   "detail": "Rafael-v0.5.1-poc.apk (v0.5.1-poc) answered 206",
+   "name": "Android download: latest Rafael APK"
+  },
+  {
+   "detail": "Rafael-Kids-Browser-v0.2.0-poc.apk (v0.2.0-poc) answered 206",
+   "name": "Android download: latest Rafael Kids Browser APK"
+  }
+ ]
+}
