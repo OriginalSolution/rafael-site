@@ -1,5 +1,5 @@
 {
- "checked_at": "2026-11-19T20:49:26Z",
+ "checked_at": "2026-11-20T07:31:45Z",
  "checks": [
   {
    "detail": "200",
@@ -12,7 +12,7 @@
    "ok": true
   },
   {
-   "detail": "200, certificate 84 days left",
+   "detail": "200, certificate 83 days left",
    "name": "Site: HTTPS",
    "ok": true
   },
@@ -32,10 +32,10 @@
    "ok": false
   }
  ],
- "consecutive_attention": 9,
+ "consecutive_attention": 10,
  "last_ok_at": "2026-11-15T07:35:21Z",
  "reason": "Android download: latest Rafael APK: releases API answered 404; last good Rafael-v0.5.1-poc.apk also fails (404); Android download: latest Rafael Kids Browser APK: releases API answered 404; last good Rafael-Kids-Browser-v0.2.0-poc.apk also fails (404)",
- "run": "https://github.com/OriginalSolution/rafael-site/actions/runs/44612552827",
+ "run": "https://github.com/OriginalSolution/rafael-site/actions/runs/44695601235",
  "service": "userafael.com",
  "status": "attention"
 }
